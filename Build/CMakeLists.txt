@@ -10,7 +10,7 @@ pkg_search_module(FUSE REQUIRED fuse)
 
 add_compile_options(-D_FILE_OFFSET_BITS=64)
 
-add_executable(FuseFileSystem_2 main.c Bitmap.c Directory.c FileSystem.c INode.c Util.c)
+add_executable(FuseFileSystem_2 ../main.c ../Bitmap.c ../Directory.c ../FileSystem.c ../INode.c ../Util.c)
 
 # Link against Fuse library using pkg-config
 target_link_libraries(FuseFileSystem_2 PRIVATE ${FUSE_LIBRARIES})
