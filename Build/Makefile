@@ -1,7 +1,7 @@
 CC ?= gcc
 CFLAGS ?= -g -Wall -O2
 
-SOURCES := $(wildcard *.c)
+SOURCES := $(wildcard ../*.c)
 
 # this target should build all executables for all tests
 all:

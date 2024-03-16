@@ -1,6 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <time.h>
+#include <unistd.h>
 
 #include "Bitmap.h"
 #include "FileSystem.h"
@@ -209,6 +211,13 @@ int create_i_node(filesystem_t *filesystem, i_node_type type, mode_t mode, const
 
     i_node->data_size = 0;
     i_node->data = NULL;
+
+    clock_gettime(CLOCK_REALTIME, &i_node->mtime);
+    clock_gettime(CLOCK_REALTIME, &i_node->ctime);
+    clock_gettime(CLOCK_REALTIME, &i_node->atime);
+
+    i_node->owner_id = getuid();
+    i_node->group_id = getgid();
 
     return 0;
 }

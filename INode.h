@@ -12,15 +12,18 @@ typedef enum {
 } i_node_type;
 
 typedef struct {
-
     i_node_type type;
-
-    unsigned int data_size;
-    void *data;
     mode_t mode;
-
     i_node_number_t i_node_number;
+    int data_size;
+    int owner_id;
+    int group_id;
 
+    struct timespec atime;
+    struct timespec mtime;
+    struct timespec ctime;
+
+    void *data;
 } i_node_t;
 
 #endif //FUSEFILESYSTEM_INODE_H

@@ -70,6 +70,12 @@ static int perform_getattr(const char *path, struct stat *stateBuff) {
         stateBuff->st_mode = S_IFLNK | 0777;
     }
     stateBuff->st_size = node->data_size;
+    stateBuff->st_gid = node->group_id;
+    stateBuff->st_uid = node->owner_id;
+
+    stateBuff->st_mtim = node->mtime;
+    stateBuff->st_ctim = node->ctime;
+    stateBuff->st_atim = node->atime;
 
     return 0;
 }
